@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Dependent Clauses Quiz</title>
+    <!-- Load Tailwind CSS for professional styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use the Inter font family for a clean, academic look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Apply the Inter font as the default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom styles for quiz elements */
+        
+        /* Style for the question card after grading */
+        .question-card.correct {
+            border-color: #22c55e; /* green-500 */
+            background-color: #f0fdf4; /* green-50 */
+        }
+        
+        .question-card.incorrect {
+            border-color: #ef4444; /* red-500 */
+            background-color: #fef2f2; /* red-50 */
+        }
+
+        /* Style for the selected radio button's label */
+        label.option:has(input[type="radio"]:checked) {
+            background-color: #eff6ff; /* blue-50 */
+            border-color: #60a5fa; /* blue-400 */
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+
+        /* Hide the default radio button */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Custom feedback containers (initially hidden) */
+        .feedback-container {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.875rem; /* text-sm */
+        }
+
+        .question-card.correct .feedback-container {
+            border-left: 4px solid #22c55e; /* border-l-4 border-green-500 */
+            background-color: #ffffff;
+        }
+
+        .question-card.incorrect .feedback-container {
+            border-left: 4px solid #ef4444; /* border-l-4 border-red-500 */
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-4xl mx-auto p-4 sm:p-8">
+
+        <!-- Header Section -->
+        <header class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8 border-l-8 border-blue-700">
+            <h1 class="text-2xl sm:text-3xl font-bold text-blue-900">Thailand Advanced Scholars Program</h1>
+            <h2 class="text-xl sm:text-2xl font-semibold text-gray-700 mt-2">Selection Quiz: Advanced Dependent Clauses</h2>
+            <p class="text-gray-600 mt-4">
+                This quiz is designed to assess your understanding of advanced English grammar. Please read each question carefully and select the single best answer.
+                This section is critical for evaluating English proficiency for the bilingual program.
+            </p>
+        </header>
+
+        <!-- Quiz Results Container (Initially Hidden) -->
+        <div id="resultsContainer" class="hidden bg-white p-6 sm:p-8 rounded-xl shadow-xl mb-8 text-center border-t-8 border-blue-700">
+            <h3 class="text-2xl sm:text-3xl font-bold text-blue-900">Your Results</h3>
+            <p id="scoreText" class="text-4xl font-bold text-gray-800 my-4">You scored 0 out of 20</p>
+            <p id="feedbackMessage" class="text-lg text-gray-700"></p>
+        </div>
+
+        <!-- Quiz Form -->
+        <form id="quizForm" class="space-y-6">
+
+            <!-- Section 1: Q1-5 -->
+            <h3 class="text-xl font-semibold text-gray-800 border-b-2 border-gray-300 pb-2">Part 1: Knowledge & Fact Checking</h3>
+            
+            <!-- Q1 -->
+            <div id="q1-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q1. What is the primary functional difference between a dependent clause and an independent clause, as defined in the lesson?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q1" value="A"> A. The independent clause lacks a subject and verb, while the dependent clause requires both.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q1" value="B"> B. The dependent clause must be joined to another clause and lacks a complete meaning, unlike the independent clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q1" value="C"> C. The independent clause always includes a preparatory 'it,' while the dependent clause never does.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q1" value="D"> D. The dependent clause exclusively uses "what" or "that," while the independent clause relies on relative pronouns.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div id="q2-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q2. Which of the following dependent clause types is explicitly noted as being structurally similar to, but functionally different from, a noun clause?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q2" value="A"> A. An identifying adjective clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q2" value="B"> B. An adverb clause showing condition.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q2" value="C"> C. A relative clause modifying a specific person.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q2" value="D"> D. A "that clause," also called a complement.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div id="q3-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q3. If an adjective clause is removed from a sentence and the identity of the noun it modifies is still perfectly clear (e.g., if the noun is a specific name), what punctuation must be used?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q3" value="A"> A. A semicolon is required before the clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q3" value="B"> B. The clause must be set off by a comma before and a comma or period after.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q3" value="C"> C. No punctuation should be used, as it is an identifying clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q3" value="D"> D. The clause must be introduced with the conjunction "that."
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div id="q4-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q4. The conjunction "what" is unique among the introductory words for dependent clauses because it can only be used in which specific type of clause?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q4" value="A"> A. The object of a preposition in a noun clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q4" value="B"> B. A non-identifying adjective clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q4" value="C"> C. An adverb clause showing reason.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q4" value="D"> D. A "that clause" or complement.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div id="q5-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q5. When an adverb clause is used in a sentence, what is its primary role, as described in the lesson?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q5" value="A"> A. To function as the direct object of the main verb, replacing a noun.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q5" value="B"> B. To modify a noun that comes immediately before it.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q5" value="C"> C. To function like an adverb, showing a specific relationship (e.g., contrast, reason, time) between clauses.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q5" value="D"> D. To introduce a preparatory 'it' and position the subject later in the sentence.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Section 2: Q6-10 -->
+            <h3 class="text-xl font-semibold text-gray-800 border-b-2 border-gray-300 pb-2 pt-6">Part 2: Grammar Guidelines (True/False)</h3>
+
+            <!-- Q6 -->
+            <div id="q6-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q6. True or False: In a noun clause acting as the object of a verb, the conjunction "that" can often be omitted if the sentence remains clear, as "that" serves no purpose beyond introducing the clause.</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q6" value="A"> A. True, but only if the noun clause is very short.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q6" value="B"> B. False, "that" is always required for grammatical completeness.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q6" value="C"> C. True, "that" can be removed if the meaning is clear because its function is only introductory.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q6" value="D"> D. False, removing "that" would convert the noun clause into a "that clause."
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div id="q7-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q7. True or False: If an adjective clause is acting as the subject of the clause itself (e.g., using 'who'), the relative pronoun can always be removed.</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q7" value="A"> A. True, because the subject is always identifiable in context.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q7" value="B"> B. False, the relative pronoun cannot be taken out if it is also the subject of the clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q7" value="C"> C. True, but only if the sentence is simple and does not contain any other dependent clauses.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q7" value="D"> D. False, relative pronouns must only be removed in adverb clauses.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div id="q8-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q8. True or False: When an adverb clause precedes the independent clause, a comma should always separate the two clauses.</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q8" value="A"> A. True, a comma is typically used when the adverb clause precedes the independent clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q8" value="B"> B. False, commas are only used to separate non-identifying adjective clauses.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q8" value="C"> C. True, but only if the adverb clause is showing a relationship of contrast.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q8" value="D"> D. False, adverb clauses never use commas, regardless of placement.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q9 -->
+            <div id="q9-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q9. True or False: In formal writing, using a long noun clause as the subject of a sentence is often avoided because the structure is considered awkward, prompting the use of a preparatory 'it.'</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q9" value="A"> A. False, long noun clauses are highly encouraged as subjects in formal writing for precision.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q9" value="B"> B. True, the 'preparatory it' is used to make the subject less awkward by placing the long noun clause later.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q9" value="C"> C. False, the preparatory 'it' is only used before non-identifying adjective clauses.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q9" value="D"> D. True, but this applies only to noun clauses introduced by "what," not "that."
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q10 -->
+            <div id="q10-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q10. True or False: Adverb clauses only show relationships of contrast, condition, reason, or time, and no other types of relationships are possible.</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q10" value="A"> A. True, the source states only these four relationships are possible for adverb clauses.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q10" value="B"> B. False, the source states there are "others as well," but only provides these four as examples.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q10" value="C"> C. True, because adverb clauses do not use conjunctions like "who" or "which."
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q10" value="D"> D. False, adverb clauses only show relationships of time or condition.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+            
+            <!-- Section 3: Q11-15 -->
+            <h3 class="text-xl font-semibold text-gray-800 border-b-2 border-gray-300 pb-2 pt-6">Part 3: Matching Clauses to Examples</h3>
+
+            <!-- Q11 -->
+            <div id="q11-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q11. "I bought myself a motorcycle for my birthday, <strong class="text-blue-700">which made my wife crazy</strong>."</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q11" value="A"> A. Non-Identifying Adjective Clause
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q11" value="B"> B. Situational Adjective Clause
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q11" value="C"> C. Adverb Clause showing reason
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q11" value="D"> D. Noun Clause acting as object of the verb
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q12 -->
+            <div id="q12-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q12. "I don't worry about <strong class="text-blue-700">what others think</strong>."</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q12" value="A"> A. Adverb Clause showing condition
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q12" value="B"> B. Noun Clause acting as the subject complement
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q12" value="C"> C. Noun Clause acting as the object of a preposition
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q12" value="D"> D. Identifying Adjective Clause
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q13 -->
+            <div id="q13-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q13. "<strong class="text-blue-700">Although he practiced every day</strong>, he didn't win."</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q13" value="A"> A. Adverb Clause showing contrast
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q13" value="B"> B. Noun Clause acting as the subject
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q13" value="C"> C. Situational Adjective Clause
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q13" value="D"> D. "That Clause" or Complement
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q14 -->
+            <div id="q14-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q14. "Tom isn't <strong class="text-blue-700">what you would call friendly</strong>."</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q14" value="A"> A. Noun Clause acting as the object of a verb
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q14" value="B"> B. Adverb Clause showing reason
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q14" value="C"> C. Noun Clause acting as the subject complement
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q14" value="D"> D. Adjective Clause modifying a specific person
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q15 -->
+            <div id="q15-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q15. "The girl <strong class="text-blue-700">who sold me the car</strong> said it was hers."</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q15" value="A"> A. Identifying Adjective Clause
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q15" value="B"> B. Non-Identifying Adjective Clause
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q15" value="C"> C. Noun Clause acting as the object of a preposition
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q15" value="D"> D. Adverb Clause showing time
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Section 4: Q16-20 -->
+            <h3 class="text-xl font-semibold text-gray-800 border-b-2 border-gray-300 pb-2 pt-6">Part 4: Contextual & Advanced Concepts</h3>
+
+            <!-- Q16 -->
+            <div id="q16-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q16. Analyze the following sentence structure: "When my mother, who was only 18 when she had me, told me I should wait until I got older to marry Lucy..." Which element in this phrase acts as the main verb being modified by the initial adverb clause ("When my mother...")?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q16" value="A"> A. The non-identifying adjective clause *who was only 18 when she had me.*
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q16" value="B"> B. The second adverb clause *when she had me.*
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q16" value="C"> C. The independent clause's main verb *told me.*
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q16" value="D"> D. The embedded noun clause *I should wait.*
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q17 -->
+            <div id="q17-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q17. The distinction between using "that" versus "which" in adjective clauses is critical for tests like the TOEFL and SAT. Based on the lesson, what is the correct usage rule for "that" when describing a thing?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q17" value="A"> A. "That" is used for non-identifying clauses and must be preceded by a comma.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q17" value="B"> B. "That" is used exclusively for non-identifying clauses and cannot be omitted.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q17" value="C"> C. "That" is used for identifying clauses (essential information) and must not use a comma.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q17" value="D"> D. "That" is used for situational clauses and must be followed by a comma.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q18 -->
+            <div id="q18-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q18. Consider the sentence: "I knew she was really happy I met the right person." The final clause ("I met the right person") is referred to as a "that clause" or complement. What is its stated function in this context?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q18" value="A"> A. To act as the direct object of the verb "knew," making it a noun clause.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q18" value="B"> B. To act as a subject complement to the subject "she."
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q18" value="C"> C. To complete the preceding idea of "happiness," providing extra information without acting as a noun, adjective, or adverb.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q18" value="D"> D. To show the condition required for the independent clause's action.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q19 -->
+            <div id="q19-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q19. How does the source differentiate a noun clause from a subject complement when both follow a "be" verb?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q19" value="A"> A. The noun clause follows a transitive verb, whereas the subject complement follows an intransitive verb.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q19" value="B"> B. The noun clause *is* the subject complement when it comes after a "be" verb and completes the meaning of the subject.
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q19" value="C"> C. The noun clause is only used as a subject complement if it begins with the conjunction "what."
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q19" value="D"> D. A noun clause can be removed without affecting the core idea, whereas a subject complement is essential.
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Q20 -->
+            <div id="q20-card" class="question-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent transition-all duration-300">
+                <p class="text-lg font-semibold text-gray-900 mb-4">Q20. In the complex sentence: "When my mother, who was only 18 when she had me, told me I should wait until I got older to marry Lucy, I knew she was really happy I met the right person," which clause carries the single, most important piece of information, as defined by the lesson?</p>
+                <div class="space-y-3">
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q20" value="A"> A. The first adverb clause: *When my mother... told me I should wait...*
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q20" value="B"> B. The independent clause: *I knew she was really happy...*
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q20" value="C"> C. The non-identifying adjective clause: *who was only 18 when she had me.*
+                    </label>
+                    <label class="option block p-4 rounded-lg border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all">
+                        <input type="radio" name="q20" value="D"> D. The concluding "that clause" or complement: *I met the right person.*
+                    </label>
+                </div>
+                <div class="feedback-container">
+                    <p class="correct-answer font-bold text-gray-900"></p>
+                    <p class="explanation text-gray-700 mt-1"></p>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-6">
+                <button type="button" id="submitBtn" class="w-full bg-blue-700 text-white font-bold text-lg py-4 px-8 rounded-lg shadow-xl hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                    Submit Quiz
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- JavaScript for Quiz Logic -->
+    <script>
+        // --- DATA ---
+        // Store all correct answers and explanations in objects for easy access
+        const correctAnswers = {
+            q1: 'B', q2: 'D', q3: 'B', q4: 'A', q5: 'C',
+            q6: 'C', q7: 'B', q8: 'A', q9: 'B', q10: 'B',
+            q11: 'B', q12: 'C', q13: 'A', q14: 'C', q15: 'A',
+            q16: 'C', q17: 'C', q18: 'C', q19: 'B', q20: 'B'
+        };
+
+        const explanations = {
+            q1: "A dependent (subordinate) clause cannot stand by itself and lacks a complete meaning, while an independent clause can stand by itself and has a complete meaning.",
+            q2: "The source specifies that a 'that clause' (complement) is 'closest to the noun clause, but it doesn't function like a noun clause'.",
+            q3: "Non-identifying adjective clauses provide extra information about an already known noun. They must be set off by commas before and after the clause; if the clause ends the sentence, a period is used instead of a second comma.",
+            q4: "The conjunction 'what' is unique because it 'can only be used in a noun clause; not in an adjective clause, not in an adverb clause'. Note: The provided answer 'A' is the *example* from the text, 'what others think', which is the object of a preposition. The core rule is that 'what' is used *only in noun clauses* (in any position: subject, object, etc.).",
+            q5: "An adverb clause works like an adverb and shows a specific relationship (such as contrast, condition, reason, or time) between the dependent clause and the clause it is attached to, usually the independent clause.",
+            q6: "The conjunction 'that' can often be 'taken out' of a noun clause if the meaning remains 'very clear' without it, as it is only used to introduce the clause.",
+            q7: "When the relative pronoun in an adjective clause is also functioning as the subject of that clause (e.g., using 'who' or 'which' as the subject), it 'can't because it is also the subject'.",
+            q8: "The example provided in the source shows the adverb clause followed by a comma when it precedes the independent clause ('Although he practiced every day, he didn't win'). This is a standard punctuation rule.",
+            q9: "People rarely use long noun clauses as subjects, especially in writing, because it is 'a bit awkward,' leading to the use of a 'preparatory 'it'' to position the subject later.",
+            q10: "While the source lists contrast, condition, reason, and time as examples of relationships shown by adverb clauses, it explicitly states there are 'others as well'.",
+            q11: "This is a 'situational adjective clause' because it modifies 'an entire phrase or clause that came before it' (the situation of buying the motorcycle), not just the immediately preceding noun ('birthday').",
+            q12: "The entire bolded clause follows the preposition 'about' and functions as the object of that preposition.",
+            q13: "The conjunction 'although' shows a relationship of 'contrast,' indicating opposite expectations between the clauses ('practiced every day' vs. 'didn't win').",
+            q14: "This noun clause follows the 'be' verb ('isn't') and 'completes the meaning of the subject' ('Tom'), functioning as a subject complement.",
+            q15: "This clause identifies or specifies 'which girl' is being discussed because the noun is too general, and no commas are used, making it an identifying adjective clause.",
+            q16: "The entire initial construction 'When my mother...told me...' is an adverb clause. The verb of that clause is 'told'. The answer C is slightly confusingly worded but correctly identifies 'told me' as the key verb. The *main* clause of the *full* sentence is 'I knew...'.",
+            q17: "For standardized tests, the rule is to use 'that' for identifying adjective clauses (essential information) and use no comma; 'which' is used for non-identifying clauses (extra information) and requires a comma.",
+            q18: "The 'that clause' or complement is not an adjective, adverb, or noun clause; it is defined as just 'completing this idea' (the idea of happiness) by giving 'a little bit of extra information'.",
+            q19: "A noun clause acts as the subject complement when it comes after a 'be' verb and serves to 'complete the meaning of the subject'.",
+            q20: "The source states that the independent clause ('I knew she was really happy') is the 'main idea' and the 'most important piece of information'."
+        };
+
+        // --- EVENT LISTENER ---
+        document.getElementById('submitBtn').addEventListener('click', checkAnswers);
+
+        // --- FUNCTION ---
+        function checkAnswers() {
+            let score = 0;
+            const form = document.getElementById('quizForm');
+            const totalQuestions = 20;
+
+            // Disable all inputs after submission
+            const inputs = form.querySelectorAll('input[type="radio"]');
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+
+            // Loop through each question
+            for (let i = 1; i <= totalQuestions; i++) {
+                const qName = 'q' + i;
+                const questionCard = document.getElementById(qName + '-card');
+                const selectedOption = form.elements[qName]?.value;
+                const correctAnswer = correctAnswers[qName];
+                
+                const feedbackDiv = questionCard.querySelector('.feedback-container');
+                const answerP = feedbackDiv.querySelector('.correct-answer');
+                const explanationP = feedbackDiv.querySelector('.explanation');
+
+                // Check if an answer was selected
+                if (selectedOption) {
+                    if (selectedOption === correctAnswer) {
+                        score++;
+                        questionCard.classList.add('correct');
+                        answerP.textContent = 'Correct Answer: ' + correctAnswer;
+                    } else {
+                        questionCard.classList.add('incorrect');
+                        answerP.innerHTML = `Your Answer: <span class="font-normal">${selectedOption}</span><br>Correct Answer: <span class="font-bold">${correctAnswer}</span>`;
+                    }
+                } else {
+                    // Mark unanswered questions as incorrect
+                    questionCard.classList.add('incorrect');
+                    answerP.textContent = 'Correct Answer: ' + correctAnswer;
+                }
+
+                // Display explanation
+                explanationP.textContent = 'Explanation: ' + explanations[qName];
+                feedbackDiv.style.display = 'block';
+            }
+
+            // --- Display Final Score ---
+            const resultsContainer = document.getElementById('resultsContainer');
+            const scoreText = document.getElementById('scoreText');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+
+            scoreText.textContent = `You scored ${score} out of 20`;
+
+            // Provide a dynamic feedback message
+            let message = '';
+            if (score === 20) {
+                message = "Perfect score! An outstanding performance. You have a masterful command of this topic.";
+            } else if (score >= 18) {
+                message = "Excellent work! You have a strong and precise understanding of these advanced concepts.";
+            } else if (score >= 15) {
+                message = "Great job. You have a solid grasp of the material. Review the explanations for the questions you missed.";
+            } else if (score >= 10) {
+                message = "Good effort. This is a complex topic. Please review the feedback below to strengthen your understanding.";
+            } else {
+                message = "This is a challenging quiz. We recommend a thorough review of the lesson material and the explanations provided below.";
+            }
+            feedbackMessage.textContent = message;
+
+            // Show results and hide submit button
+            resultsContainer.classList.remove('hidden');
+            document.getElementById('submitBtn').style.display = 'none';
+
+            // Scroll to the top to show the results
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
